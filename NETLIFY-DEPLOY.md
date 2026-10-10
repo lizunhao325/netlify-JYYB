@@ -30,3 +30,16 @@ Netlify 会先执行 Next.js build，再部署 `.next`。这样 Supabase 的 `NE
 直接拖 `app/`、`components/`、`package.json` 等源码到 Netlify 的手动 Deploy 页面，并不会替你执行 `npm run build`。
 
 这个项目必须经过 Next.js build。
+
+
+## v30 data-preservation fix
+This version removes the startup migration that deleted every trade dated 2026-10-06. Existing trades on that date will now be preserved in localStorage and included in cloud snapshots after login. Trades previously deleted by an older deployment cannot be reconstructed from this source alone; re-enter them once after deploying this fix.
+
+
+## V32 persistent login and cloud sync
+- The dashboard is now gated behind Supabase Auth; a signed-in session is remembered on that browser/device.
+- On startup the app pulls the authenticated user's cloud snapshot. Changes are automatically debounced and uploaded.
+- Access/refresh tokens are kept in localStorage and refresh is attempted when the access token is near expiry.
+- Sign in with the actual email address registered in Supabase Auth. Supabase Auth does not accept an arbitrary username unless a separate username-to-email/backend mapping has been implemented.
+- Do not put the password into source code or GitHub. If the password previously shared in chat is real, change it before using this deployment.
+- On the first account signup, if Supabase requires email verification, verify the email before signing in. To use a username like `moonfreeze`, create the Supabase Auth account with a real email address and use that email at login.

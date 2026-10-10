@@ -158,3 +158,18 @@
 .trade-action-overlay{z-index:40}
 .cloud-setting{display:grid;gap:8px;padding:15px 0;border-bottom:1px solid var(--border)}
 .cloud-setting b{color:var(--foreground);font-size:12px}.cloud-setting span,.cloud-setting>small{color:var(--muted);font-size:10px;line-height:1.5}.cloud-setting input{border:1px solid var(--border);background:#0b1218;color:var(--foreground);border-radius:8px;padding:10px 11px;outline:none}.cloud-setting button{border:1px solid color-mix(in srgb,var(--theme) 35%,var(--border));background:#0c1419;color:var(--theme);border-radius:8px;padding:9px 12px;font-size:11px;font-weight:600}.cloud-actions{display:flex;gap:8px}.trade-row{justify-content:flex-start;gap:9px}.trade-result-label{color:var(--foreground);font-size:11px;font-weight:600;white-space:nowrap}.trade-issues{margin-left:auto;color:#fff!important;font-size:11px!important;font-weight:700;white-space:nowrap}
+
+
+/* Persistent cloud-auth gate */
+.cloud-login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--background,#080b0b)}
+.cloud-login-card{width:min(100%,420px);display:flex;flex-direction:column;gap:14px;padding:32px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(255,255,255,.035);box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.cloud-login-card h1{font-size:28px;line-height:1.2;margin:0;color:#fff}
+.cloud-login-card>p{margin:0;color:rgba(255,255,255,.68);line-height:1.6}
+.cloud-login-card label{display:flex;flex-direction:column;gap:7px;color:rgba(255,255,255,.82);font-size:13px}
+.cloud-login-card input{width:100%;min-height:44px;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:rgba(0,0,0,.24);padding:0 12px;color:#fff;outline:none}
+.cloud-login-card input:focus{border-color:var(--theme,#68e0c0)}
+.cloud-login-actions{display:flex;gap:10px;margin-top:4px}
+.cloud-login-actions button{flex:1;min-height:44px;border-radius:10px;padding:0 12px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);font-weight:600}
+.cloud-login-actions button:first-child{background:var(--theme,#68e0c0);border-color:transparent;color:#07100d}
+.cloud-login-actions button:disabled{opacity:.55;cursor:wait}
+.cloud-login-card .cloud-login-status{font-size:12px;color:rgba(255,255,255,.52);overflow-wrap:anywhere}
