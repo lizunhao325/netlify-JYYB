@@ -182,3 +182,34 @@
 .daily-chart-toggle{width:100%;border:0;background:transparent;color:var(--foreground);text-align:left;cursor:pointer;padding:4px 0}.daily-chart-toggle .rotate{transform:rotate(180deg)}.daily-chart-toggle>span{margin-left:auto;color:var(--muted);font-size:10px}.daily-chart-toggle h3{font-size:14px}.daily-image-actions{position:absolute;top:7px;right:7px;display:flex;gap:6px}.daily-image-actions button,.image-manage-actions button{position:static;background:#07100eed;border:1px solid #ffffff30;color:#fff;border-radius:6px;padding:6px 9px;font-size:10px;display:flex;align-items:center;gap:5px}.daily-image-actions .daily-image-delete,.image-manage-actions button{color:#ff9696}.daily-image-replace{position:static}.review-note{display:grid;gap:8px;margin-top:16px}.review-note label{font-size:12px;color:var(--muted);font-weight:650}.review-note textarea{width:100%;resize:vertical;min-height:100px;border:1px solid var(--border);border-radius:10px;background:#0b1218;color:var(--foreground);padding:12px;line-height:1.65;font:inherit;font-size:12px;outline-color:var(--theme)}.trade-info-modal{width:min(540px,100%);max-height:88vh;overflow-y:auto;position:relative;padding:30px;background:#111a21;border:1px solid #30434e;border-radius:20px;box-shadow:0 25px 90px #000b}.trade-info-modal h2{margin:12px 0 20px}.trade-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.trade-info-grid>div{display:grid;gap:7px;padding:12px;border:1px solid var(--border);border-radius:9px;background:#0b1218}.trade-info-grid span{font-size:11px;color:var(--muted)}.trade-info-grid b{font-size:13px}.trade-info-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.trade-info-actions button{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:8px;padding:9px 13px;background:#0b1218;color:var(--theme)}.upload-current-image{display:block;max-width:100%;max-height:240px;object-fit:contain;margin:14px auto;border-radius:8px;background:#070b0f}.image-manage-actions{display:flex;justify-content:flex-end;margin:8px 0}.screenshot-trade-row .upload-index{min-width:38px}@media(max-width:600px){.trade-info-modal{padding:24px 18px}.trade-info-grid{gap:7px}.trade-info-grid>div{padding:10px}.daily-image-actions button{padding:5px 7px}}
 
 .day-detail-head-actions{display:flex;align-items:flex-start;gap:8px;min-width:0}.daily-chart-head-toggle{display:flex;align-items:center;gap:5px;white-space:nowrap;padding:5px 0}.daily-chart-head-toggle h3{font-size:11px;gap:5px}.daily-chart-head-toggle>span{font-size:10px;margin-left:0}.day-detail-head{padding-right:28px}.day-detail-head-actions .day-violation-tags{margin-top:4px}.daily-chart-uploads{margin-top:8px}
+
+/* V42 review experience: centered, fully editable trade and daily review dialogs */
+.review-modal-backdrop{z-index:35;padding:18px;overflow-y:auto;align-items:center;}
+.review-modal{max-height:min(90vh,920px);overflow-y:auto;overscroll-behavior:contain;}
+.review-modal .close{position:absolute;right:16px;top:16px;z-index:2;}
+.review-subhead{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.review-subhead>b,.review-subhead>label{font-size:12px;color:var(--muted);font-weight:650;margin:0;}
+.review-text-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--border);border-radius:8px;padding:7px 10px;background:#0b1218;color:var(--theme);font-size:11px;cursor:pointer;white-space:nowrap;}
+.review-text-button:hover{border-color:var(--theme);}
+.review-image-section{margin-top:18px;display:grid;gap:10px;}
+.review-image-card{position:relative;border:1px solid var(--border);border-radius:11px;overflow:hidden;background:#060a0e;min-height:90px;}
+.review-image-card>img{display:block;width:100%;max-height:390px;object-fit:contain;cursor:zoom-in;}
+.image-delete-x{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:30px;height:30px;border:1px solid #ffffff55;border-radius:50%;background:#05090de8;color:#ffaaaa;cursor:pointer;z-index:1;}
+.image-delete-x:hover{background:#4b1717;color:#fff;}
+.review-empty-hint{margin:0;color:var(--muted);font-size:11px;line-height:1.7;}
+.review-note-display{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:13px;border:1px solid var(--border);border-radius:10px;background:#0b1218;color:var(--foreground);font-size:12px;line-height:1.75;min-height:54px;}
+.review-save-row{display:flex;justify-content:flex-end;margin-top:10px;}
+.daily-review-modal{width:min(1000px,100%);padding:30px;background:#111a21;border:1px solid #30434e;border-radius:20px;box-shadow:0 25px 90px #000b;}
+.daily-review-modal h2{margin:12px 0 8px;}
+.daily-review-intro{margin:0 0 18px;color:var(--muted);font-size:12px;line-height:1.7;}
+.review-daily-image-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.review-daily-image-grid .daily-image-slot{min-width:0;min-height:170px;}
+.review-daily-image-grid .review-image-card{height:100%;min-height:170px;display:flex;align-items:center;justify-content:center;}
+.review-daily-image-grid .review-image-card>img{width:100%;max-height:300px;object-fit:contain;}
+.review-image-replace{position:absolute;left:8px;bottom:8px;display:inline-flex;align-items:center;gap:5px;border:1px solid #ffffff38;border-radius:7px;background:#07100eed;color:#fff;padding:7px 9px;font-size:10px;cursor:pointer;}
+.review-daily-image-grid .daily-image-empty{min-height:170px;height:100%;}
+.daily-review-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);}
+.daily-review-note textarea{min-height:140px;}
+@media(max-width:700px){.review-modal-backdrop{padding:10px;}.trade-info-modal.review-modal,.daily-review-modal{padding:24px 16px;max-height:92vh;border-radius:15px;}.review-daily-image-grid{grid-template-columns:1fr;}.review-daily-image-grid .daily-image-slot,.review-daily-image-grid .review-image-card{min-height:120px;}.review-daily-image-grid .review-image-card>img{max-height:260px;}.trade-info-actions{justify-content:stretch;}.trade-info-actions button{justify-content:center;flex:1;}}
+/* Upload dialogs opened from a review dialog must sit above that dialog. */
+.modal-backdrop:has(.screenshot-upload-modal){z-index:48;}
