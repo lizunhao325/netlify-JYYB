@@ -1,7 +1,7 @@
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 const SESSION_KEY = 'trading-journal-cloud-session'
-export const CLOUD_KEYS = ['trading-journal-trades','trading-journal-daily-review-images','trading-journal-limits','trading-journal-quotes','trading-journal-pinned','trading-journal-theme','trading-journal-capital','trading-journal-capital-adjustment','trading-journal-capital-lock','trading-journal-r-limit','trading-journal-r-lock','trading-journal-fuse-until','trading-journal-extra-used','trading-journal-cycle-start','trading-journal-limit-notice-seen','trading-journal-fuse-unlock-used','trading-journal-admin-reset-at','trading-journal-daily-base','trading-journal-undo']
+export const CLOUD_KEYS = ['trading-journal-trades','trading-journal-limits','trading-journal-quotes','trading-journal-pinned','trading-journal-theme','trading-journal-capital','trading-journal-capital-adjustment','trading-journal-capital-lock','trading-journal-r-limit','trading-journal-r-lock','trading-journal-fuse-until','trading-journal-extra-used','trading-journal-cycle-start','trading-journal-limit-notice-seen','trading-journal-fuse-unlock-used','trading-journal-admin-reset-at','trading-journal-daily-base','trading-journal-undo']
 export const cloudConfigured = Boolean(URL && ANON)
 type Session = { access_token:string; refresh_token:string; expires_at?:number; expires_in?:number; token_type?:string; user?:{id:string;email?:string} }
 const headers=(token:string)=>({'apikey':ANON,'Authorization':`Bearer ${token}`,'Content-Type':'application/json'})
