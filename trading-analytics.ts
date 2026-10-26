@@ -9,6 +9,7 @@ export type Trade = {
   ownTrade: boolean
   normalStopLoss?: boolean
   createdAt: string
+  screenshot?: string
 }
 
 export function getStats(trades: Trade[]) {
@@ -115,8 +116,7 @@ export function smoothedEquityPoints(trades: Trade[], startingCapital = 0, range
 export function monthDays(year: number, month: number) {
   const first = new Date(year, month, 1).getDay()
   const count = new Date(year, month + 1, 0).getDate()
-  // The calendar header is Saturday-first: 六、一、二、三、四、五、日.
-  // Convert JS Sunday-first weekday index (Sun=0 ... Sat=6) to that exact grid.
-  const offset = (first + 1) % 7
+  // Calendar order: Saturday → Monday → Friday → Sunday, keeping the trading weekdays in the middle.
+  const offset = first === 6 ? 0 : first === 0 ? 6 : first
   return [...Array(offset)].map(() => null).concat([...Array(count)].map((_, i) => i + 1))
 }
