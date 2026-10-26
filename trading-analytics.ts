@@ -9,7 +9,7 @@ export type Trade = {
   ownTrade: boolean
   normalStopLoss?: boolean
   createdAt: string
-  screenshot?: string
+  reviewImage?: string
 }
 
 export function getStats(trades: Trade[]) {
