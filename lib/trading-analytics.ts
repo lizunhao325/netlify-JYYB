@@ -113,8 +113,9 @@ export function smoothedEquityPoints(trades: Trade[], startingCapital = 0, range
 }
 
 export function monthDays(year: number, month: number) {
-  // Standard Sunday-first calendar: getDay() already returns 0 for Sunday through 6 for Saturday.
-  const offset = new Date(year, month, 1).getDay()
+  const first = new Date(year, month, 1).getDay()
   const count = new Date(year, month + 1, 0).getDate()
+  // Calendar order: Saturday → Monday → Friday → Sunday, keeping the trading weekdays in the middle.
+  const offset = first === 6 ? 0 : first === 0 ? 6 : first
   return [...Array(offset)].map(() => null).concat([...Array(count)].map((_, i) => i + 1))
 }
