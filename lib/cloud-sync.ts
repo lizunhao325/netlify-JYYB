@@ -1,7 +1,7 @@
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 const SESSION_KEY = 'trading-journal-cloud-session'
-export const CLOUD_KEYS = ['trading-journal-trades','trading-journal-limits','trading-journal-quotes','trading-journal-pinned','trading-journal-theme','trading-journal-capital','trading-journal-capital-adjustment','trading-journal-capital-lock','trading-journal-r-limit','trading-journal-r-lock','trading-journal-fuse-until','trading-journal-extra-used','trading-journal-cycle-start','trading-journal-limit-notice-seen','trading-journal-fuse-unlock-used','trading-journal-admin-reset-at','trading-journal-daily-base','trading-journal-undo']
+export const CLOUD_KEYS = ['trading-journal-daily-images','trading-journal-trade-notes','trading-journal-daily-notes','trading-journal-trades','trading-journal-limits','trading-journal-quotes','trading-journal-pinned','trading-journal-theme','trading-journal-capital','trading-journal-capital-adjustment','trading-journal-capital-lock','trading-journal-r-limit','trading-journal-r-lock','trading-journal-fuse-until','trading-journal-extra-used','trading-journal-cycle-start','trading-journal-limit-notice-seen','trading-journal-fuse-unlock-used','trading-journal-admin-reset-at','trading-journal-daily-base','trading-journal-undo']
 export const cloudConfigured = Boolean(URL && ANON)
 type Session = { access_token:string; refresh_token:string; expires_at?:number; expires_in?:number; token_type?:string; user?:{id:string;email?:string} }
 const headers=(token:string)=>({'apikey':ANON,'Authorization':`Bearer ${token}`,'Content-Type':'application/json'})
@@ -36,7 +36,7 @@ export async function syncCloud(){
  const session=await validSession();if(!session?.access_token||!session.user?.id)return {status:'logged_out'} as const
  const remote=await getRemote(session.access_token,session.user.id)
  if(!remote){await uploadCloud();return {status:'uploaded'} as const}
- const changed=applySnapshot(remote.data||{});return {status:changed?'downloaded':'synced',updatedAt:remote.updated_at} as const
+ const remoteData={...(remote.data||{})} as Record<string,string|null>;const local=localSnapshot();for(const key of ['trading-journal-daily-images','trading-journal-trade-notes','trading-journal-daily-notes'])if(!(key in remoteData)&&local[key]!==null)remoteData[key]=local[key];const changed=applySnapshot(remoteData);return {status:changed?'downloaded':'synced',updatedAt:remote.updated_at} as const
 }
 export async function uploadCloud(){
  if(!cloudConfigured)throw new Error('云端同步尚未配置')
